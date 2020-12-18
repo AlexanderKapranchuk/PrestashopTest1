@@ -6,7 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PrestashopTest1" />
+        <module name="Prestashop-pageObject-My-23.12" />
+        <module name="PrestashopMyTest" />
       </profile>
     </annotationProcessing>
   </component>
