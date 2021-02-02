@@ -9,6 +9,9 @@ import utils.enums.Currency;
 
 
 public class HomePage extends BaseTest {
+    public HomePage() {
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(name = "s")
     private WebElement SearchField;
@@ -18,10 +21,6 @@ public class HomePage extends BaseTest {
 
     @FindBy(xpath = "//span[contains(@class, 'expand-more _gray-darker hidden-sm-down')]")
     private WebElement currencyDropDown;
-
-    public HomePage() {
-        PageFactory.initElements(driver, this);
-    }
 
     @Step("Get page Title")
     public String getTitle() {

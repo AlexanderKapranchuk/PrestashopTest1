@@ -11,11 +11,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
     public static WebDriver driver;
     public static Properties prop;
+
+    public static long PAGE_LOAD_TIMEOUT = 7;
+    public static long IMPLICIT_WAIT = 7;
 
     public BaseTest() {
         try {
@@ -34,7 +38,7 @@ public class BaseTest {
         String browserName = prop.getProperty("browser");
 
         if (browserName.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "//src/test/" + "resources/drivers/chromedriver86.exe");
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "//src/test/" + "resources/drivers/chromedriver88.exe");
             driver = new ChromeDriver();
         } else if (browserName.equals("FF")) {
             System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "//src/test/resources/drivers/gecko.exe");
@@ -42,11 +46,13 @@ public class BaseTest {
         }
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
+        driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
     }
-
+/*
     @AfterTest
     public void quit() {
         driver.quit();
-    }
+    }*/
 
 }
