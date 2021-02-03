@@ -1,12 +1,17 @@
 package tests;
 
 import Common.BaseTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.SearchPage.SearchPageResults;
 import pages.blocks.Header;
 import pages.home.HomePage;
 import pages.home.RegistrationPage;
+
+import static org.testng.Assert.assertTrue;
 
 public class RegistrationTest extends BaseTest {
 
@@ -29,5 +34,8 @@ public class RegistrationTest extends BaseTest {
         registrationPAGE.typeInName();
         registrationPAGE.typeMail();
         registrationPAGE.saveUser();
+        //Check registration
+        registrationPAGE.loginUserVerify();
+        Assert.assertTrue(registrationPAGE.elementIsDisplayed1());
     }
 }

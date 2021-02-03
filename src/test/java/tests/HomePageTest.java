@@ -38,8 +38,9 @@ public class HomePageTest extends BaseTest {
     @Test
     public void changeCurrentCurrencyToUsdTest() {
         header.currencySelector();
-        header.selectEURCurrency();
-        Assert.assertEquals(homePAGE.getCurrentProductCurrency(), Currency.EUR.toString(), "Currency is not EUR");
+        header.waitCurrencyClickable();
+        header.selectUSDCurrency();
+        Assert.assertEquals(homePAGE.getCurrentProductCurrency(), Currency.USD.toString(), "Currency is not EUR");
     }
     @Test
     public void changeCurrencyAndVerify(){
@@ -69,6 +70,5 @@ public class HomePageTest extends BaseTest {
         header.selectUAHCurrency();
         System.out.println(header.verifyUAH() + " Price of products");
         Assert.assertTrue(header.verifyUAH().contains("₴"),"Product is not contain ₴");
-
     }
 }

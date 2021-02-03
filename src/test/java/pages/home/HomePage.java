@@ -28,8 +28,8 @@ public class HomePage extends BaseTest {
     }
 
     @Step("Search by word")
-    public void SearchElement() {
-        SearchField.sendKeys("dress");
+    public void searchElement(String search) {
+        SearchField.sendKeys(search);
         SearchField.submit();
     }
 

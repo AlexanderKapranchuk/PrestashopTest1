@@ -2,11 +2,14 @@ package pages.home;
 
 import Common.BaseTest;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class RegistrationPage extends BaseTest {
@@ -38,6 +41,29 @@ public class RegistrationPage extends BaseTest {
     @FindBy(xpath = "//*[@id='customer-form']/footer/button")
     private WebElement Save;
 
+    @FindBy(xpath = "//*[@id=\"_desktop_user_info\"]/div/a[2]/span")
+    private WebElement Login;
+
+    @FindBy(xpath = "//*[@id=\"main\"]")
+    public WebElement UserIsLogin;
+    
+    @Step("Element is not displayed")
+    public boolean elementIsDisplayed1()
+    { wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='main']")));
+        try {
+            driver.findElement(By.xpath("//*[@id='main']"));
+            return true;
+        } catch (NoSuchElementException e){
+            return false;
+        }
+    }
+
+    @Step("Login click and chek")
+    public void loginUserVerify(){
+        Login.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='main']")));
+    }
+
     @Step("Create user")
     public void createUserClick(){
         CreateUser.click();}
@@ -59,4 +85,5 @@ public class RegistrationPage extends BaseTest {
     public void saveUser(){
         Save.click();
     }
+
 }

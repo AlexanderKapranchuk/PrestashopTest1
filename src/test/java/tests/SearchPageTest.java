@@ -29,11 +29,27 @@ public class SearchPageTest extends BaseTest {
     @Test
     public void SearchDressTest(){
         SearchPAGE.WaitSearchDress();
-        SearchPAGE.SearchDress();
+        homePAGE.searchElement("Dress");
         SearchPAGE.QuickView();
         SearchPAGE.WaitTitleOfElement();
         String getProductTest = SearchPAGE.getTitleOfProduct();
         System.out.println(getProductTest);
         Assert.assertEquals(getProductTest,"Faded Short Sleeve T-Shirts","Title is not displayed");
+    }
+    @Test
+    public void searchProductTest(){
+        homePAGE.openMainUrl();
+        homePAGE.searchElement("Dress");//передаєм string в метод (по такому принципу можна і інші значення)
+    }
+    @Test
+    public void countSearchProductTest(){ //визначаємо чи відповідає кількість елементів тайтлу
+    homePAGE.searchElement("printed");
+    Assert.assertEquals(SearchPAGE.getProductListSize(),
+            SearchPAGE.getSearchResultTitleAmount(),
+            "Search result and title of product does not equals");
+
+
+
+
     }
 }

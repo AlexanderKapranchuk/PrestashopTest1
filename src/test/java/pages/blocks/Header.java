@@ -68,7 +68,7 @@ public class Header extends BaseTest {
     @Step("Select the USD currency in the CurrencyDropDown")
     public void selectUSDCurrency() {USD.click(); }
 
-    @Step("Wait for USD")
+    @Step("Wait for USD and UAH")
     public void waitCurrencyClickable() {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'USD $')]")));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(), 'UAH ₴')]")));   }
